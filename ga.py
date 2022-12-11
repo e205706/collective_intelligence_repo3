@@ -48,7 +48,7 @@ class Ga:
     accumulation_arr = np.cumsum(self.n_generation_vector, axis = 1) + self.start_point
     road = np.apply_along_axis(lambda x: np.bincount(x, minlength = self.col), axis = 0, arr = accumulation_arr)
     plt.clf()
-    return sns.heatmap(road, cmap='Blues').get_figure()
+    return sns.heatmap(road, cmap='Blues')
 
   def point(self):
     #点数を表示する
@@ -86,4 +86,4 @@ while len(np.unique(ga.n_generation_vector, axis = 0)) != 1:
 print(f"{generation}世代 : 合計{ga.point()[0]}点")
 ga.road_plot()
 #plotを保存する場合
-#ga.road_plot().savefig("img_name.png", dpi=400)
+#ga.road_plot().get_figure().savefig("img_name.png", dpi=400)
