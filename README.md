@@ -1,1 +1,1 @@
-# collective_intelligence_repo3
+# コレクティブインテリジェンス　課題３
