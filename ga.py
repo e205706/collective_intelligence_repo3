@@ -69,14 +69,18 @@ class Ga:
 
 
 
-#コンストラクタ
+#ここを変更する
+#ステージを読み込む
 arr = np.loadtxt("stage1.csv", delimiter=',', dtype='int')
+#遺伝子の数:15 交叉した遺伝子の数:30 入れ替えるベクトル数:5 ルーレット選択の重み:15
+genes_num, cross_num, change_index_num, probability_width = 15, 30, 5, 15
 
-ga = Ga(arr, genes_num=15, cross_num=30)
+#コンストラクタ
+ga = Ga(arr, genes_num=genes_num, cross_num=cross_num)
 generation = 1
 while len(np.unique(ga.n_generation_vector, axis = 0)) != 1:
-  ga.get_cross_vector(change_index_num = 5)
-  ga.select(probability_width = 15)
+  ga.get_cross_vector(change_index_num = change_index_num)
+  ga.select(probability_width = probability_width)
   generation += 1
 
 print(f"{generation}世代 : 合計{ga.point()[0]}点")
